@@ -1,0 +1,15 @@
+# Dependências do Trichogramma Pi Service
+# Instale com: pip3 install -r requirements.txt
+
+# Bluetooth RFCOMM/SPP support
+pybluez==0.23
+
+# GPIO control para Raspberry Pi
+RPi.GPIO==0.7.1
+
+# YAML configuration parser
+PyYAML==6.0.1
+
+# Process and system utilities (opcional)
+psutil==5.9.5
+

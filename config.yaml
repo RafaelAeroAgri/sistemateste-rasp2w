@@ -1,0 +1,44 @@
+# Configuração do Serviço Trichogramma Pi
+# Edite este arquivo para ajustar as configurações do seu sistema
+
+bluetooth:
+  # Nome do serviço Bluetooth que aparecerá para os dispositivos
+  service_name: "TrichoPi"
+  
+  # UUID padrão para Serial Port Profile (SPP) - não altere a menos que necessário
+  uuid: "00001101-0000-1000-8000-00805F9B34FB"
+
+servo:
+  # Número do pino GPIO (BCM numbering) conectado ao sinal do servo
+  # IMPORTANTE: Altere este valor para o pino que você está usando!
+  # Exemplos comuns: 18, 13, 12, 19
+  pwm_pin: 18
+  
+  # Frequência PWM em Hz (padrão para servos é 50Hz)
+  frequency: 50
+  
+  # Duty cycle mínimo em % (correspondente ao ângulo 0°)
+  # Ajuste conforme o seu modelo de servo
+  min_duty: 2.5
+  
+  # Duty cycle máximo em % (correspondente ao ângulo 180°)
+  # Ajuste conforme o seu modelo de servo
+  max_duty: 12.5
+
+calibration:
+  # Ângulo inicial do sweep de calibração
+  sweep_angle_from: 0
+  
+  # Ângulo final do sweep de calibração
+  sweep_angle_to: 180
+  
+  # Delay em segundos entre cada passo do sweep
+  sweep_delay_s: 0.5
+
+logging:
+  # Caminho completo do arquivo de log
+  logfile: "/var/log/trichogramma-service.log"
+  
+  # Nível de log: DEBUG, INFO, WARNING, ERROR, CRITICAL
+  level: "INFO"
+

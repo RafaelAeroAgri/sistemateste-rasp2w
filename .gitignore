@@ -1,0 +1,55 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual Environment
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# Logs
+*.log
+logs/
+/var/log/trichogramma-service.log*
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Config local (se quiser manter config.yaml versionado, remova esta linha)
+# config.yaml
+
+# Arquivos temporários
+*.tmp
+*.bak
+*.backup
+
+# Sistema
+.directory
+Thumbs.db
+
