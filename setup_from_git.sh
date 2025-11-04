@@ -87,8 +87,15 @@ echo ""
 echo "=========================================="
 echo "PASSO 5/7: Instalando pacotes Python"
 echo "=========================================="
-pip3 install -r requirements.txt --break-system-packages 2>/dev/null || \
-    pip3 install -r requirements.txt
+
+# Instalar pybluez via apt (mais confiável no Raspberry Pi OS)
+echo "Instalando pybluez via apt..."
+sudo apt install -y python3-bluez python3-pybluez
+
+# Instalar outros pacotes Python
+echo "Instalando pacotes Python restantes..."
+pip3 install --break-system-packages RPi.GPIO==0.7.1 PyYAML==6.0.1 psutil==5.9.5
+
 echo "✓ Pacotes Python instalados"
 
 echo ""

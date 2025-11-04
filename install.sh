@@ -63,9 +63,13 @@ echo ""
 echo "[4/6] Instalando pacotes Python..."
 cd "$(dirname "$0")"
 
-# Tenta instalar com pip3
-pip3 install -r requirements.txt --break-system-packages 2>/dev/null || \
-    pip3 install -r requirements.txt
+# Instalar pybluez via apt (mais confiável no Raspberry Pi OS Bookworm+)
+echo "Instalando pybluez via apt..."
+sudo apt install -y python3-bluez python3-pybluez
+
+# Instalar outros pacotes Python com --break-system-packages
+echo "Instalando pacotes Python restantes..."
+pip3 install --break-system-packages RPi.GPIO==0.7.1 PyYAML==6.0.1 psutil==5.9.5
 
 # 5. Configurar permissões
 echo ""
