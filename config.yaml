@@ -12,7 +12,8 @@ servo:
   # Número do pino GPIO (BCM numbering) conectado ao sinal do servo
   # IMPORTANTE: Altere este valor para o pino que você está usando!
   # Exemplos comuns: 18, 13, 12, 19
-  pwm_pin: 18
+  # CONFIGURADO: GPIO 4 (pino físico 7)
+  pwm_pin: 4
   
   # Frequência PWM em Hz (padrão para servos é 50Hz)
   frequency: 50
