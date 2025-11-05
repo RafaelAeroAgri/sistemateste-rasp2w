@@ -1,0 +1,23 @@
+[Unit]
+Description=Trichogramma Pi HTTP Service
+After=network.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/home/aeroagri/trichogramma-pi/service
+ExecStart=/usr/bin/python3 /home/aeroagri/trichogramma-pi/service/http_server.py
+
+Restart=on-failure
+RestartSec=5
+
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=trichogramma-http
+
+Environment="PYTHONUNBUFFERED=1"
+
+[Install]
+WantedBy=multi-user.target
+

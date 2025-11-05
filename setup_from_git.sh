@@ -88,13 +88,13 @@ echo "=========================================="
 echo "PASSO 5/7: Instalando pacotes Python"
 echo "=========================================="
 
-# Instalar pybluez via apt (mais confiável no Raspberry Pi OS)
-echo "Instalando pybluez via apt..."
-sudo apt install -y python3-bluez python3-pybluez
+# Instalar dependências Bluetooth via apt
+echo "Instalando dependências Bluetooth..."
+sudo apt install -y python3-bluez libbluetooth-dev
 
-# Instalar outros pacotes Python
-echo "Instalando pacotes Python restantes..."
-pip3 install --break-system-packages RPi.GPIO==0.7.1 PyYAML==6.0.1 psutil==5.9.5
+# Instalar pacotes Python (incluindo pybluez via pip)
+echo "Instalando pacotes Python..."
+pip3 install --break-system-packages pybluez RPi.GPIO==0.7.1 PyYAML==6.0.1 psutil==5.9.5
 
 echo "✓ Pacotes Python instalados"
 
@@ -122,10 +122,17 @@ echo "=========================================="
 sudo systemctl enable bluetooth
 sudo systemctl start bluetooth
 
-# Configura o Bluetooth para ser descoberto
-sudo hciconfig hci0 piscan
+# Torna o script de descoberta executável
+chmod +x scripts/bluetooth_discoverable.sh
 
-echo "✓ Bluetooth configurado e ativo"
+# Configura serviço para Bluetooth sempre detectável
+sudo cp systemd/bluetooth-discoverable.service /etc/systemd/system/
+sudo sed -i "s|/home/pi|$HOME|g" /etc/systemd/system/bluetooth-discoverable.service
+sudo systemctl daemon-reload
+sudo systemctl enable bluetooth-discoverable.service
+sudo systemctl start bluetooth-discoverable.service
+
+echo "✓ Bluetooth configurado: sempre ativo e detectável"
 
 echo ""
 echo "================================================================"

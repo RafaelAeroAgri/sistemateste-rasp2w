@@ -63,13 +63,13 @@ echo ""
 echo "[4/6] Instalando pacotes Python..."
 cd "$(dirname "$0")"
 
-# Instalar pybluez via apt (mais confiável no Raspberry Pi OS Bookworm+)
-echo "Instalando pybluez via apt..."
-sudo apt install -y python3-bluez python3-pybluez
+# Instalar dependências Bluetooth via apt
+echo "Instalando dependências Bluetooth..."
+sudo apt install -y python3-bluez libbluetooth-dev
 
-# Instalar outros pacotes Python com --break-system-packages
-echo "Instalando pacotes Python restantes..."
-pip3 install --break-system-packages RPi.GPIO==0.7.1 PyYAML==6.0.1 psutil==5.9.5
+# Instalar pacotes Python com --break-system-packages
+echo "Instalando pacotes Python..."
+pip3 install --break-system-packages pybluez RPi.GPIO==0.7.1 PyYAML==6.0.1 psutil==5.9.5
 
 # 5. Configurar permissões
 echo ""

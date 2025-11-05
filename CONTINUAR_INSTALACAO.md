@@ -8,8 +8,8 @@ Na sua Raspberry Pi (`aeroagri@raspberrypi`), execute:
 
 ```bash
 cd ~/trichogramma-pi && \
-sudo apt install -y python3-bluez python3-pybluez && \
-pip3 install --break-system-packages RPi.GPIO==0.7.1 PyYAML==6.0.1 psutil==5.9.5 && \
+sudo apt install -y python3-bluez libbluetooth-dev && \
+pip3 install --break-system-packages pybluez RPi.GPIO==0.7.1 PyYAML==6.0.1 psutil==5.9.5 && \
 echo "✓ Pacotes instalados com sucesso!"
 ```
 
@@ -35,18 +35,30 @@ sudo systemctl enable trichogramma.service
 echo "✓ Serviço systemd configurado"
 ```
 
-### PASSO 7/7: Configurar Bluetooth
+### PASSO 7/7: Configurar Bluetooth (Sempre Ativo)
 
 ```bash
 # Habilitar Bluetooth
 sudo systemctl enable bluetooth
 sudo systemctl start bluetooth
 
-# Tornar detectável
-sudo hciconfig hci0 piscan
+# Configurar para sempre detectável e pareável
+cd ~/trichogramma-pi
+chmod +x scripts/bluetooth_discoverable.sh
+sudo cp systemd/bluetooth-discoverable.service /etc/systemd/system/
+sudo sed -i "s|/home/aeroagri|$HOME|g" /etc/systemd/system/bluetooth-discoverable.service
+sudo systemctl daemon-reload
+sudo systemctl enable bluetooth-discoverable.service
+sudo systemctl start bluetooth-discoverable.service
 
-echo "✓ Bluetooth configurado"
+echo "✓ Bluetooth configurado: sempre ativo e detectável"
 ```
+
+**O que foi configurado:**
+- ✅ Bluetooth sempre ligado
+- ✅ Sempre detectável (qualquer dispositivo pode encontrar)
+- ✅ Sempre pareável (aceita conexões automaticamente)
+- ✅ Inicia automaticamente no boot
 
 ---
 

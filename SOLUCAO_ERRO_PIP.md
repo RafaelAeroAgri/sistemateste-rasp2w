@@ -21,11 +21,11 @@ Na sua Raspberry Pi, execute:
 ```bash
 cd ~/trichogramma-pi
 
-# 1. Instalar pybluez via apt (método recomendado)
-sudo apt install -y python3-bluez python3-pybluez
+# 1. Instalar dependências Bluetooth via apt
+sudo apt install -y python3-bluez libbluetooth-dev
 
-# 2. Instalar outros pacotes Python
-pip3 install --break-system-packages RPi.GPIO==0.7.1 PyYAML==6.0.1 psutil==5.9.5
+# 2. Instalar pacotes Python (incluindo pybluez)
+pip3 install --break-system-packages pybluez RPi.GPIO==0.7.1 PyYAML==6.0.1 psutil==5.9.5
 ```
 
 **Pronto!** ✅

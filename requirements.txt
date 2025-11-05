@@ -2,17 +2,16 @@
 #
 # ATENÇÃO: No Raspberry Pi OS Bookworm e posterior, instale assim:
 #
-# 1. pybluez via apt (recomendado):
-#    sudo apt install -y python3-bluez python3-pybluez
+# 1. Dependências Bluetooth via apt:
+#    sudo apt install -y python3-bluez libbluetooth-dev
 #
-# 2. Outros pacotes com --break-system-packages:
-#    pip3 install --break-system-packages RPi.GPIO==0.7.1 PyYAML==6.0.1 psutil==5.9.5
+# 2. Pacotes Python com --break-system-packages:
+#    pip3 install --break-system-packages pybluez RPi.GPIO==0.7.1 PyYAML==6.0.1 psutil==5.9.5
 #
 # Ou use os scripts de instalação fornecidos (install.sh ou setup_from_git.sh)
 
 # Bluetooth RFCOMM/SPP support
-# IMPORTANTE: Instale via apt, não via pip!
-# sudo apt install python3-bluez python3-pybluez
+# Requer: sudo apt install python3-bluez libbluetooth-dev
 pybluez==0.23
 
 # GPIO control para Raspberry Pi
