@@ -2,11 +2,15 @@
 #
 # ATENÇÃO: No Raspberry Pi OS Bookworm e posterior, instale assim:
 #
-# 1. Dependências Bluetooth via apt:
-#    sudo apt install -y python3-bluez libbluetooth-dev
+# 1. Dependências via apt:
+#    sudo apt install -y python3-bluez libbluetooth-dev pigpio python3-pigpio
 #
 # 2. Pacotes Python com --break-system-packages:
-#    pip3 install --break-system-packages pybluez RPi.GPIO==0.7.1 PyYAML==6.0.1 psutil==5.9.5
+#    pip3 install --break-system-packages pybluez pigpio PyYAML==6.0.1 psutil==5.9.5
+#
+# 3. Habilitar e iniciar daemon pigpiod:
+#    sudo systemctl enable pigpiod
+#    sudo systemctl start pigpiod
 #
 # Ou use os scripts de instalação fornecidos (install.sh ou setup_from_git.sh)
 
@@ -14,8 +18,9 @@
 # Requer: sudo apt install python3-bluez libbluetooth-dev
 pybluez==0.23
 
-# GPIO control para Raspberry Pi
-RPi.GPIO==0.7.1
+# GPIO control via pigpio (PWM via hardware - sem jitter)
+# Requer: sudo apt install pigpio python3-pigpio
+pigpio
 
 # YAML configuration parser
 PyYAML==6.0.1

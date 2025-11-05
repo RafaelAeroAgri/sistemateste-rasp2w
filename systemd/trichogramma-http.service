@@ -1,7 +1,8 @@
 [Unit]
 Description=Trichogramma Pi HTTP Service
-After=network.target
+After=network.target pigpiod.service
 Wants=network-online.target
+Requires=pigpiod.service
 
 [Service]
 Type=simple
